@@ -5,7 +5,7 @@
   <title>CreativityBench: Evaluating Agent Creative Reasoning via Affordance-Based Tool Repurposing</title>
 
   <!-- Favicon -->
-  <link rel="icon" href="website/img/logo.jpg" type="image/png">
+  <link rel="icon" href="website/img/logo.jpg" type="image/jpg">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
@@ -111,7 +111,7 @@
     <div class="container">
       <div class="navbar-brand">
         <a class="navbar-item" href="index.html">
-          <img src="website/img/embodied-logo.png" alt="CreativityBench" width="40" height="40">
+          <img src="website/img/logo.jpg" alt="CreativityBench" width="40" height="40">
           <span class="embodiedbench" style="margin-left: 0.5rem; font-size: 1.25rem;">CreativityBench</span>
         </a>
       </div>
@@ -129,9 +129,8 @@
         <div class="columns is-centered">
           <div class="column has-text-centered">
 
-            <!-- MAIN TITLE (logo + "EmbodiedBench:") -->
             <h1 class="title is-1 publication-title is-bold">
-              <img src="website/img/embodied-logo.png"
+              <img src="website/img/logo.jpg"
                    alt="logo"
                    style="vertical-align: middle; margin-right: 20px; position: relative; top: -15px; left: 30px"
                    width="80"
@@ -141,7 +140,7 @@
 
             <!-- SUBTITLE -->
             <h2 class="title is-1 publication-title is-bold" style="margin-top:-0.7em; margin-right: 30px; margin-left: 30px;">
-              Evaluating Agent Creative Reasoning via Affordance-Based Tool Repurposing
+              Evaluating Agent Creative Reasoning via<br>Affordance-Based Tool Repurposing
             </h2>
 
             <!-- Author list -->
@@ -156,7 +155,7 @@
                 <a href="https://jiayujeff.github.io" target="_blank">Jiayu Liu</a><sup>1</sup>,
               </span>
               <span class="author-block">
-                <a href="https://hbx-hbx.github.io" target="_blank">Bingxiang He</a><sup>2*</sup>,
+                <a href="https://hbx-hbx.github.io" target="_blank">Bingxiang He</a><sup>2</sup>,
               </span><br>
               <span class="author-block">
                 <a href="https://wjdghks950.github.io">Jeonghwan Kim</a><sup>1</sup>,
@@ -339,14 +338,10 @@
       <br>
       <div class="content has-text-justified" style="max-width: 95%; font-size: 1.2em; margin: 0 auto; line-height: 1.55;">
         <p style="text-align:justify; color:rgb(31, 30, 30);">
-          We introduce <b>CreativityBench</b>, a benchmark for evaluating <b>creative intelligence in large language models (LLMs)</b> through <b>affordance-based tool use</b>.
-          Recent LLMs have made strong progress in: <b>analytical intelligence</b> (e.g., reasoning, math), and <b>practical intelligence</b> (e.g., tool use, embodied interaction).
-          However, <b>creative intelligence</b>, the ability to produce <b>novel yet physically grounded solutions under constraints</b>, remains underexplored.
+          We introduce <b>CreativityBench</b>, a comprehensive benchmark for evaluating <b>creative intelligence in large language models (LLMs)</b> through the lens of <b>affordance-based creative tool use</b>. While recent progress in LLMs has demonstrated strong analytical reasoning and practical task execution, their ability to generate <b>novel yet physically grounded solutions under constraints</b> remains largely underexplored.
         </p>
         <p style="text-align:justify; color:rgb(31, 30, 30);">
-          We operationalize creativity as <b>creative tool use</b>: the ability to infer and exploit an object’s <b>affordances</b>, which are actions enabled by its <b>physical attributes</b>, to achieve goals in <b>non-canonical ways</b>.
-          This requires reasoning beyond object identity, toward: <b>part-level structure</b> (e.g., tip, edge, surface), <b>physical attributes</b> (e.g., rigidity, sharpness, elasticity), and <b>affordance emergence</b> (e.g., cutting, prying, hooking).
-          Crucially, creative solutions must remain <b>physically grounded</b>, not just plausible.
+          CreativityBench addresses this gap by focusing on a core aspect of human creativity: the ability to <b>repurpose objects based on their underlying affordances</b>, reasoning about how an object’s <i>parts, attributes, and physical properties</i> enable unconventional but plausible uses. Rather than relying on canonical tool usage, the benchmark evaluates whether models can identify <b>non-obvious, constraint-satisfying solutions grounded in physical reality</b>.
         </p>
       </div>
 
@@ -361,11 +356,7 @@
           </figure>
 
           <p style="text-align:justify; color:rgb(31, 30, 30); margin-top:1rem; margin-bottom:1rem; line-height: 1.55; max-width: 95%; margin: 0 auto; font-size: 1.2em;">
-            EmbodiedBench is designed with two key features that set it apart from existing benchmarks:
-            <b>1. Diverse tasks with hierarchical action levels.</b> Among the four environments, <b>EB-ALFRED</b> and <b>EB-Habitat</b> focus on high-level task decomposition and planning (e.g., <i>"put a book on the desk"</i> ), 
-            while <b>EB-Navigation</b> and <b>EB-Manipulation</b> demand planning with low-level actions (e.g., <i>translational/rotational control</i> ) and require precise perception and spatial reasoning. 
-            <b>2. Capability-oriented evaluation.</b> Unlike previous benchmarks that primarily emphasize overall accuracy or module-specific performance, 
-            EmbodiedBench introduces a fine-grained evaluation framework that assesses six critical capabilities of embodied agents, including <b>basic task solving</b>, <b>commonsense reasoning</b>, <b>complex instruction understanding</b>, <b>spatial awareness</b>, <b>visual perception</b>, and <b>long-horizon planning</b>. 
+            CreativityBench is more than a benchmark, but it is a <b>structured and scalable evaluation framework for creative reasoning</b>, designed to uncover fundamental limitations in current models and guide future progress toward more flexible, adaptive intelligence. 
           </p>
         </div>
       </div>
@@ -373,19 +364,36 @@
       <!-- Figure 2 -->
       <br>
       <br>
-      <h2 class="title is-3" style="text-align:center; margin-bottom: 2.5rem; font-size: 2.3em;">Agent Pipeline</h2>
+      <h2 class="title is-3" style="text-align:center; margin-bottom: 2.5rem; font-size: 2.3em;">Affordance Knowledge Base</h2>
       <div class="columns is-centered has-text-centered" style="margin-top:2em;">
         <div class="column is-eight-fifths">
           <figure class="table-figure">
-            <img class="figure-image" src="website/img/planner_pipeline.png" alt="Figure 2. Vision-driven agent pipeline used in EMBODIEDBENCH." style="max-width: 98%; margin: 0 auto; margin-bottom:1rem;" />
+            <img class="figure-image" src="website/img/pipeline.png" alt="Figure 2. Annotation Pipeline For Affordance Knowledge Base Construction." style="max-width: 98%; margin: 0 auto; margin-bottom:1rem;" />
             <figcaption class="figure-caption" style="font-size: 1.1em;">
-              <b>Figure 2.</b> Vision-driven agent pipeline used in EmbodiedBench.
+              <b>Figure 2.</b> Annotation Pipeline For Affordance Knowledge Base Construction.
             </figcaption>
           </figure>
 
           <p style="text-align:justify; margin-top:1em;  margin-bottom:1rem; line-height: 1.55; max-width: 95%; font-size: 1.2em; margin: 0 auto; color:rgb(31, 30, 30);">
-            To evaluate MLLMs as agents in EmbodiedBench, we design a unified embodied agent pipeline, illustrated in Figure 2. 
-            This pipeline provides a robust framework for processing multimodal inputs, reasoning through interactions, and generating structured, executable plans composed of sequential actions.
+            We construct a large-scale, structured affordance knowledge base (KB) containing <b>4K entities and 150K+ affordance annotations</b>, explicitly linking objects to their <b>parts, attributes, and actionable uses</b>. This KB enables grounded reasoning by anchoring model decisions in <b>fine-grained physical properties</b>, rather than surface-level semantic associations.
+          </p>
+        </div>
+      </div>
+    </div>
+    <br>
+      <br>
+      <h2 class="title is-3" style="text-align:center; margin-bottom: 2.5rem; font-size: 2.3em;">Physically Grounded Creative Tasks</h2>
+      <div class="columns is-centered has-text-centered" style="margin-top:2em;">
+        <div class="column is-eight-fifths">
+          <figure class="table-figure">
+            <img class="figure-image" src="website/img/task_sampling_pipeline.png" alt="Figure 2. CreativityBench Task Sampling Pipeline." style="max-width: 98%; margin: 0 auto; margin-bottom:1rem;" />
+            <figcaption class="figure-caption" style="font-size: 1.1em;">
+              <b>Figure 3.</b> CreativityBench Task Sampling Pipeline.
+            </figcaption3>
+          </figure>
+
+          <p style="text-align:justify; margin-top:1em;  margin-bottom:1rem; line-height: 1.55; max-width: 95%; font-size: 1.2em; margin: 0 auto; color:rgb(31, 30, 30);">
+            Using our affordance KB, we generate <b>14K diverse tasks</b> that require models to identify <b>non-obvious yet physically plausible solutions</b> under constraints. Each task is constructed to go beyond object-level plausibility, requiring models to reason about <b>how affordances emerge from structure</b> and how they can be recombined to achieve a goal.
           </p>
         </div>
       </div>
