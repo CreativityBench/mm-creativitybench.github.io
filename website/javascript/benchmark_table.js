@@ -341,6 +341,7 @@ document.addEventListener('DOMContentLoaded', function () {
             responsiveLayout: "collapse",
             responsiveLayoutCollapseStartOpen: false,
             movableColumns: false,
+            initialSort: [{ column: "order", dir: "asc" }],
             columnDefaults: {
                 tooltip: true,
                 headerSort: false,
@@ -354,7 +355,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     return div;
                 }
             },
-            columns: cb_columns
+            columns: [{ title: "", field: "order", visible: false, headerSort: false }, ...cb_columns]
         });
     });
 })

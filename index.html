@@ -409,19 +409,20 @@
   <br>
   <section class="section" id="overview" style="padding-top:4rem;">
       <div class="container" style="max-width: 95%; font-size: 1.0em; margin: 0 auto; line-height: 1.55;">
-        <h2 class="title is-3" style="text-align:center; margin-bottom: 2.8rem; font-size: 2.3em;">Error Analysis</h2>
+        <h2 class="title is-3" style="text-align:center; margin-bottom: 2.8rem; font-size: 2.3em;">Attribution Analysis</h2>
         <p style="text-align:justify; margin-top:1em; color:rgb(31, 30, 30); margin-top:1.7rem; margin-bottom:1rem; line-height: 1.55; font-size: 1.2em;" >
-          In this section, We conducted an error analysis on GPT-4o to identify potential failure modes. 
-          For each environment, we sample 10 failure episodes from each subset, resulting in a total of 110 failed episodes to be analyzed. 
-          We found three main types of errors: perception errors, reasoning errors, and planning errors.
-          Each error type corresponds to a specific stage in our agent pipeline. 
-          For example, perception errors occur during the visual state description stage, reasoning errors arise in the reflection and reasoning stages, and planning errors occur during the language plan and executable plan generation stages.
+          In this section, we conduct an attribution-based error analysis to identify the primary failure modes in creative tool use. For each model, we randomly sample 10% of its failure cases, resulting in a representative set of failed episodes. We then use Gemini-3.1-Flash-Lite as a categorization model to analyze why each prediction is considered inferior to the gold solution.
+          We identify four major categories of errors: <b>physical invalidity</b>, <b>practical infeasibility</b>, <b>risk or constraint mismatch</b>, and <b>comparative inferiority</b>. Each category corresponds to a distinct stage in the affordance-based reasoning process.
+          This categorization enables us to disentangle failures due to incorrect physical reasoning, impractical procedures, constraint violations, and preference-based comparisons, providing a more fine-grained understanding of where current models break down in affordance-based creative reasoning.
         </p>
 
-      <figure class="table-figure" style="margin-top:1em; max-width: 90%; margin: 0 auto;">
-        <img class="figure-image" src="website/img/error_analysis.png" alt="Figure 3. Error Analysis." />
-        <figcaption class="figure-caption" style="text-align: center; font-size: 1.1em;">
-          <b>Figure 3.</b> Error Analysis.
+      <figure class="table-figure" style="max-width: 90%; margin: 1em auto 0;">
+        <div style="display: flex; gap: 2rem; justify-content: center; align-items: flex-start;">
+          <img class="figure-image" src="website/img/meta_primary_category_pie.png" alt="Primary Failure Category." style="flex: 1; max-width: 45%; width: 100%;" />
+          <img class="figure-image" src="website/img/meta_primary_category_pie.png" alt="Frequency of Categories Appearing as Contributing Factors." style="flex: 1; max-width: 45%; width: 100%;" />
+        </div>
+        <figcaption class="figure-caption" style="text-align: center; font-size: 1.1em; margin-top: 0.5em;">
+          <b>Figure 3.</b> Attribution Analysis. Most failures come from weak physical grounding: models often over-imagine what objects can do or choose tools whose real properties do not support the intended use. Practicality and safety matter too, but far fewer errors are simply suboptimal alternatives rather than genuinely mismatched solutions.
         </figcaption>
       </figure>
     </div>
