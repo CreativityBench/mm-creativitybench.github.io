@@ -208,239 +208,117 @@ var barColorFn = function (value, formatterParams) {
     return 'rgba(' + interpolated.r + ',' + interpolated.g + ',' + interpolated.b + ',0.9)';
 }
 
+var colorFormatterFloat4 = function (cell, formatterParams) {
+    var value = cell.getValue();
+    if (value === "-" || value === null || value === undefined) return value ?? "-";
+
+    var defaults = {
+        min: 0.0,
+        max: 1.0,
+        startColor: { r: 255, g: 255, b: 255 },
+        endColor: { r: 204, g: 211, b: 202 }
+    };
+
+    var min = (formatterParams && formatterParams.min != null) ? formatterParams.min : defaults.min;
+    var max = (formatterParams && formatterParams.max != null) ? formatterParams.max : defaults.max;
+    var startColor = (formatterParams && formatterParams.startColor) || defaults.startColor;
+    var endColor = (formatterParams && formatterParams.endColor) || defaults.endColor;
+
+    var normalizedValue = (max === min) ? 0 : (value - min) / (max - min);
+    normalizedValue = Math.max(0, Math.min(1, normalizedValue));
+
+    var red   = Math.floor(startColor.r + (endColor.r - startColor.r) * normalizedValue);
+    var green = Math.floor(startColor.g + (endColor.g - startColor.g) * normalizedValue);
+    var blue  = Math.floor(startColor.b + (endColor.b - startColor.b) * normalizedValue);
+
+    var display = parseFloat(value).toFixed(4);
+    return "<span style='display:block;width:100%;height:100%;font-size:1.0em;background-color:rgb(" + red + "," + green + "," + blue + ");'>" + display + "</span>";
+};
+
 document.addEventListener('DOMContentLoaded', function () {
-    Promise.all([
-        fetch('website/data/eb_alfred_total_benchmark.json').then(response => response.json()),
-        fetch('website/data/eb_habitat_total_benchmark.json').then(response => response.json()),
-    ])
-        .then(([
-            eb_alfred_total_benchmark_data,
-            eb_habitat_total_benchmark_data,
-        ]) => {
+    fetch('website/data/creativitybench_total_benchmark.json')
+        .then(response => response.json())
+        .then(data => {
             var getColumnMinMax = (data, field) => {
-                let values = data.map(item => item[field]).filter(val => val !== "-").map(Number);
+                let values = data
+                    .filter(item => item.group !== "Average")
+                    .map(item => item[field])
+                    .filter(val => val !== "-" && val != null)
+                    .map(Number);
                 return { min: Math.min(...values), max: Math.max(...values) };
             };
 
-            var eb_alfred_columns = [
+            var toolUsageEnd   = { r: 162, g: 196, b: 170 };
+            var constraintEnd  = { r: 181, g: 192, b: 208 };
+            var groundingEnd   = { r: 245, g: 232, b: 221 };
+            var feasibilityEnd = { r: 238, g: 211, b: 217 };
+            var predictionEnd  = { r: 204, g: 211, b: 202 };
+
+            var makeCol = function (title, field, endColor) {
+                var { min, max } = getColumnMinMax(data, field);
+                return {
+                    title: title,
+                    field: field,
+                    cssClass: "avg-column",
+                    hozAlign: "center",
+                    minWidth: 110,
+                    headerSort: true,
+                    sorter: "number",
+                    formatter: colorFormatterFloat4,
+                    formatterParams: { min, max, startColor: { r: 255, g: 255, b: 255 }, endColor: endColor }
+                };
+            };
+
+            var cb_columns = [
                 {
                     title: "Model",
                     field: "model",
-                    cssClass: "avg-column",
+                    cssClass: "avg-column cb-model-col",
                     widthGrow: 1.5,
                     minWidth: 180,
-                    headerSort: true 
+                    headerSort: true
                 },
                 {
-                    title: "Avg<br>Perf.",
-                    field: "eb_alfred_avg",
-                    cssClass: "avg-column",
-                    formatter: "progress",
-                    minWidth: 90,
-                    formatterParams: {
-                        min: 0,
-                        max: 100,
-                        legend: true,
-                        color: barColorFn
-                    }
+                    title: "Tool Usage",
+                    columns: [
+                        makeCol("Gold Correct",   "gold_correct",   toolUsageEnd),
+                        makeCol("Entity Correct", "entity_correct", toolUsageEnd)
+                    ]
                 },
                 {
-                    title: "Base",
-                    field: "eb_alfred_base",
-                    cssClass: "avg-column",
-                    hozAlign: "center",
-                    minWidth: 90,
-                    headerSort: true,
-                    formatter: colorFormatterSubgoal
+                    title: "Constraint Coverage",
+                    columns: [
+                        makeCol("Use (C<sub>u</sub>)",   "constraint_use",  constraintEnd),
+                        makeCol("Env. (C<sub>e</sub>)",  "constraint_env",  constraintEnd),
+                        makeCol("Rcpt. (C<sub>r</sub>)", "constraint_rcpt", constraintEnd)
+                    ]
                 },
-                {
-                    title: "Common",
-                    field: "eb_alfred_common",
-                    cssClass: "avg-column",
-                    hozAlign: "center",
-                    minWidth: 90,
-                    headerSort: true,
-                    formatter: colorFormatterActionSeq
-                },
-                {
-                    title: "Complex",
-                    field: "eb_alfred_complex",
-                    cssClass: "avg-column",
-                    hozAlign: "center",
-                    minWidth: 90,
-                    headerSort: true,
-                    formatter: colorFormatterTrans
-                },
-                {
-                    title: "Visual",
-                    field: "eb_alfred_visual",
-                    cssClass: "avg-column",
-                    hozAlign: "center",
-                    minWidth: 90,
-                    headerSort: true,
-                    formatter: colorFormatterGoalInt
-                },
-                {
-                    title: "Spatial",
-                    field: "eb_alfred_spatial",
-                    cssClass: "avg-column",
-                    hozAlign: "center",
-                    minWidth: 90,
-                    headerSort: true,
-                    formatter: colorFormatterSubgoal
-                },
-                {
-                    title: "Long",
-                    field: "eb_alfred_long",
-                    cssClass: "avg-column",
-                    hozAlign: "center",
-                    minWidth: 90,
-                    headerSort: true,
-                    formatter: colorFormatterActionSeq
-                }
+                makeCol("Physical<br>Grounding",      "physical_grounding",      groundingEnd),
+                makeCol("Action<br>Feasibility",      "action_feasibility",      feasibilityEnd),
+                makeCol("Prediction<br>Correctness",  "prediction_correctness",  predictionEnd)
             ];
 
-            eb_alfred_columns.forEach(column => {
-                if (column.columns) {
-                    column.columns.forEach(subColumn => {
-                        let { min, max } = getColumnMinMax(eb_alfred_total_benchmark_data, subColumn.field);
-                        subColumn.formatterParams = { min, max };
-                    });
-                } else if (column.field !== "eb_alfred_avg") {
-                    let { min, max } = getColumnMinMax(eb_alfred_total_benchmark_data, column.field);
-                    column.formatterParams = { min, max };
-                }
-            });
+            var groupOrder = ["Closed-Source", "Open-Source", "Average"];
 
-            var eb_alfred_table = new Tabulator("#eb-alfred-benchmark-main-table", {
-                data: eb_alfred_total_benchmark_data,
+            new Tabulator("#creativitybench-benchmark-main-table", {
+                data: data,
                 layout: "fitColumns",
-                responsiveLayout: "collapse",
-                responsiveLayoutCollapseStartOpen: false,
                 movableColumns: false,
-                initialSort: [
-                    { column: "eb_alfred_avg", dir: "desc" },
-                ],
-                columnDefaults: {
-                    tooltip: true,
+                groupBy: "group",
+                groupOrder: function (a, b) {
+                    return groupOrder.indexOf(a) - groupOrder.indexOf(b);
                 },
-                // columns: eb_alfred_columns
-                columns: eb_alfred_columns.map(column => {
-                    if (column.field === "eb_alfred_avg") {
-                        return { ...column, sorter: "number" };
+                groupHeader: function (value, count) {
+                    if (value === "Average") return "<span class='cb-group-avg'>Average</span>";
+                    return "<span class='cb-group-header'>" + value + " Models</span>";
+                },
+                rowFormatter: function (row) {
+                    if (row.getData().group === "Average") {
+                        row.getElement().classList.add("cb-row-average");
                     }
-                    return column;
-                })
-            });
-
-            var eb_habitat_columns = [
-                {
-                    title: "Model",
-                    field: "model",
-                    cssClass: "avg-column",
-                    widthGrow: 1.5,
-                    minWidth: 180,
-                    headerSort: true 
                 },
-                {
-                    title: "Avg<br>Perf.",
-                    field: "eb_habitat_avg",
-                    cssClass: "avg-column",
-                    formatter: "progress",
-                    minWidth: 90,
-                    formatterParams: {
-                        min: 0, max: 80,
-                        legend: true,
-                        color: barColorFn,
-                    },
-                },
-                {
-                    title: "Base",
-                    field: "eb_habitat_base",
-                    cssClass: "avg-column",
-                    hozAlign: "center",
-                    minWidth: 100,
-                    headerSort: true,
-                    formatter: colorFormatterSubgoal
-                },
-                {
-                    title: "Common",
-                    field: "eb_habitat_common",
-                    cssClass: "avg-column",
-                    hozAlign: "center",
-                    minWidth: 100,
-                    headerSort: true,
-                    formatter: colorFormatterActionSeq
-                },
-                {
-                    title: "Complex",
-                    field: "eb_habitat_complex",
-                    cssClass: "avg-column",
-                    hozAlign: "center",
-                    minWidth: 100,
-                    headerSort: true,
-                    formatter: colorFormatterTrans
-                },
-                {
-                    title: "Visual",
-                    field: "eb_habitat_visual",
-                    cssClass: "avg-column",
-                    hozAlign: "center",
-                    minWidth: 100,
-                    headerSort: true,
-                    formatter: colorFormatterGoalInt
-                },
-                {
-                    title: "Spatial",
-                    field: "eb_habitat_spatial",
-                    cssClass: "avg-column",
-                    hozAlign: "center",
-                    minWidth: 100,
-                    headerSort: true,
-                    formatter: colorFormatterSubgoal
-                },
-                {
-                    title: "Long",
-                    field: "eb_habitat_long",
-                    cssClass: "avg-column",
-                    hozAlign: "center",
-                    minWidth: 100,
-                    headerSort: true,
-                    formatter: colorFormatterActionSeq
-                }
-            ];
-
-            eb_habitat_columns.forEach(column => {
-                if (column.columns) {
-                    column.columns.forEach(subColumn => {
-                        let { min, max } = getColumnMinMax(eb_habitat_total_benchmark_data, subColumn.field);
-                        subColumn.formatterParams = { min, max };
-                    });
-                } else if (column.field !== "eb_habitat_avg") {
-                    let { min, max } = getColumnMinMax(eb_habitat_total_benchmark_data, column.field);
-                    column.formatterParams = { min, max };
-                }
-            });
-
-            var eb_habitat_table = new Tabulator("#eb-habitat-benchmark-main-table", {
-                data: eb_habitat_total_benchmark_data,
-                layout: "fitColumns",
-                responsiveLayout: "collapse",
-                responsiveLayoutCollapseStartOpen: false,
-                movableColumns: false,
-                initialSort: [
-                    { column: "eb_habitat_avg", dir: "desc" },
-                ],
-                columnDefaults: {
-                    tooltip: true,
-                },
-                // columns: eb_habitat_columns
-                columns: eb_habitat_columns.map(column => {
-                    if (column.field === "eb_habitat_avg") {
-                        return { ...column, sorter: "number" };
-                    }
-                    return column;
-                })
+                columnDefaults: { tooltip: true },
+                columns: cb_columns
             });
         });
 })
