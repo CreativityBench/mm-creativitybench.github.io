@@ -260,7 +260,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 cssClass: "avg-column",
                 hozAlign: "center",
                 minWidth: 110,
-
+                sorter: "number",
                 formatter: colorFormatterFloat4
             },
             {
