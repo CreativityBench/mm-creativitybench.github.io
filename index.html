@@ -367,6 +367,7 @@
                       <figcaption style="font-size: 0.95em; margin-top: 0.4em; text-align: center;">(b) Qwen3-8B-VL-Instruct.</figcaption>
                     </figure>
                   </div>
+                </div>
                 <p class="image-subtitle" style="font-size: 1.1em; margin-top: 1rem;">
                   <b>Figure 6.</b> Repetition Rate measures how often the model revisits previously explored entities or parts, where lower values reflect better state tracking efficiency. SFT, DPO with hard negatives, and SFT+DPO all substantially reduce redundant exploration. Our training improves the model’s ability to <b>maintain an exploration state and avoid revisiting already inspected regions.</b>
                 </p>
@@ -387,6 +388,7 @@
                       <figcaption style="font-size: 0.95em; margin-top: 0.4em; text-align: center;">(b) Similarity density.</figcaption>
                     </figure>
                   </div>
+                </div>
                 <p class="image-subtitle" style="font-size: 1.1em; margin-top: 1rem;">
                   <b>Figure 7.</b>Similarity Density measures how concentrated exploration is around useful hypotheses: part-level density is the fraction of explored parts that are gold part or affordance-similar to it, while entity-level density is the fraction of explored entities that are gold entity or contain at least one affordance-similar part. Exploration Progress records when such candidates are discovered along the trajectory using the normalized turn index.<br><br>SFT improves exploration discipline and state tracking, while DPO steers exploration toward semantically useful hypotheses.
                 </p>
@@ -409,7 +411,7 @@
                   </div>
                 </div>
                 <p class="image-subtitle" style="font-size: 1.1em; margin-top: 1rem;">
-                  <b>Figure 7.</b> Primary error-category rates reveal that SFT+DPO substantially reduces physical/functional invalidity errors, especially affordance mismatch (A2), and removes most practical and risk/constraint errors.
+                  <b>Figure 8.</b> Primary error-category rates reveal that SFT+DPO substantially reduces physical/functional invalidity errors, especially affordance mismatch (A2), and removes most practical and risk/constraint errors.
                 </p>
               </div>
             </div>
