@@ -283,7 +283,7 @@
       <div class="columns is-centered has-text-centered" style="margin-top:2em;">
         <div class="column is-eight-fifths">
           <figure class="table-figure">
-            <img class="figure-image" src="website/img/training.png" alt="Figure 3. Affordance-Grounded Alignment." style="max-width: 85%; margin: 0 auto; margin-bottom:1rem;" />
+            <img class="figure-image" src="website/img/training.png" alt="Figure 3. Affordance-Grounded Alignment." style="max-width: 75%; margin: 0 auto; margin-bottom:1rem;" />
             <figcaption class="figure-caption" style="font-size: 1.1em;">
               <b>Figure 3.</b> Affordance-Grounded Alignment
             </figcaption3>
@@ -302,7 +302,7 @@
 
   <!-- Leaderboard and Findings Section -->
   <section class="section" id="leaderboard-findings" style="padding-top:1.5rem;">
-    <div class="container" style="max-width: 85%">
+    <div class="container" style="max-width: 90%">
       <h2 class="title is-3" style="text-align:center; margin-bottom:3rem; font-size: 2.3em;">Leaderboard</h2>
       <p style="text-align:justify; margin-top:1em;  margin-bottom:1rem; line-height: 1.55; max-width: 95%; font-size: 1.2em; margin: 0 auto; color:rgb(31, 30, 30);">
         The benchmarking results on MM-CreativityBench. Models often locate the relevant entity but struggle with fine-grained gold-part grounding. Larger exploration traces improve evidence coverage but do not guarantee correct answers, revealing bottlenecks in visual evidence use. <br>
@@ -324,33 +324,29 @@
               <div class="content has-text-centered" style="margin-bottom: 2rem;">
                 <div style="display: flex; gap: 1.5rem; justify-content: center; align-items: flex-start;">
                   <figure style="flex: 1; max-width: 48%; margin: 0;">
-                    <img src="website/img/fig_cluster_grouped_bars.png" alt="" style="width: 100%;" />
-                    <figcaption style="font-size: 0.95em; margin-top: 0.4em; text-align: center;">(a) Gold cluster size.</figcaption>
+                    <img src="website/img/takeaway1-1.png" alt="" style="width: 100%;" />
+                    <figcaption style="font-size: 0.95em; margin-top: 0.4em; text-align: center;">(a) Performance under different affordance similarity levels.</figcaption>
                   </figure>
                   <figure style="flex: 1; max-width: 48%; margin: 0;">
-                    <img src="website/img/fig_level_heatmap.png" alt="" style="width: 100%;" />
-                    <figcaption style="font-size: 0.95em; margin-top: 0.4em; text-align: center;">(b) Gold affordance level</figcaption>
+                    <img src="website/img/takeaway1-2.png" alt="" style="width: 100%;" />
+                    <figcaption style="font-size: 0.95em; margin-top: 0.4em; text-align: center;">(b) Average number of exploration turns</figcaption>
                   </figure>
                 </div>
                 <p class="image-subtitle" style="font-size: 1.1em; margin-top: 1rem;">
-                  <b>Figure 4.</b> Model performance drops most clearly on rare, long-tail affordances, showing that commonality remains a major driver of success in grounded creative tool use.
+                  <b>Figure 4.</b> Affordance-similar distractors primarily challenge models at the level of fine-grained visual grounding and affordance disambiguation rather than exploration effort.
                 </p>
               </div>
             </div>
             <div class="box mx-auto my-4" style="max-width: 90%;">
               <div class="content has-text-centered" style="margin-bottom: 2rem;">
                 <div style="display: flex; gap: 1.5rem; justify-content: center; align-items: flex-start;">
-                  <figure style="flex: 1; max-width: 48%; margin: 0;">
-                    <img src="website/img/fig_entity_count_overall_lines.png" alt="" style="width: 100%;" />
-                    <figcaption style="font-size: 0.95em; margin-top: 0.4em; text-align: center;">(a) Distractor number.</figcaption>
-                  </figure>
-                  <figure style="flex: 1; max-width: 48%; margin: 0;">
-                    <img src="website/img/fig_difficulty_scatter.png" alt="" style="width: 100%;" />
-                    <figcaption style="font-size: 0.95em; margin-top: 0.4em; text-align: center;">(b) Distractor similarity.</figcaption>
+                  <figure style="flex: 1; max-width: 60%; margin: 0;">
+                    <img src="website/img/takeaway2.png" alt="" style="width: 100%;" />
+                    <figcaption style="font-size: 0.95em; margin-top: 0.4em; text-align: center;">Gold correct rate across different input image conditions.</figcaption>
                   </figure>
                 </div>
                 <p class="image-subtitle" style="font-size: 1.1em; margin-top: 1rem;">
-                  <b>Figure 5.</b> Both the quantity and type of distractors influence model performance. While larger candidate sets consistently increase difficulty, distractors that share similar affordances with the gold object can sometimes help highlight the relevant reasoning space, partially offsetting the distraction effect.
+                  <b>Figure 5.</b> Visual context is necessary for MM-CreativityBench, but performance depends not only on seeing images, but also on iteratively integrating task-relevant visual evidence via interaction.
                 </p>
               </div>
             </div>
@@ -417,7 +413,7 @@
     });
   </script>
 
-  <section class="section" id="overview" style="padding-top:1.5rem;">
+  <!-- <section class="section" id="overview" style="padding-top:1.5rem;">
       <div class="container" style="max-width: 95%; font-size: 1.0em; margin: 0 auto; line-height: 1.55;">
         <h2 class="title is-3" style="text-align:center; margin-bottom: 2.8rem; font-size: 2.3em;">Attribution Analysis</h2>
         <p style="text-align:justify; margin-top:1em; color:rgb(31, 30, 30); margin-top:1.7rem; margin-bottom:1rem; line-height: 1.55; font-size: 1.2em;" >
@@ -436,7 +432,7 @@
         </figcaption>
       </figure>
     </div>
-  </section>
+  </section> -->
 
   
 
