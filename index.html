@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>CreativityBench: Evaluating Agent Creative Reasoning via Affordance-Based Tool Repurposing</title>
+  <title>MM-CreativityBench: Advancing Creative Tool Use in Large Multimodal Models</title>
 
   <!-- Favicon -->
   <link rel="icon" href="website/img/logo.jpg" type="image/jpg">
@@ -153,24 +153,26 @@
               <span class="author-block">
                 <a href="https://jiayujeff.github.io" target="_blank">Jiayu Liu</a><sup>1</sup>,
               </span>
-              <!-- <span class="author-block">
-                <a href="https://hbx-hbx.github.io" target="_blank">Bingxiang He</a><sup>2</sup>,
-              </span><br> -->
               <span class="author-block">
                 <a href="https://wjdghks950.github.io">Jeonghwan Kim</a><sup>1</sup>,
               </span>
               <span class="author-block">
-                <a href="https://lumos-jiateng.github.io">Jiateng Liu</a><sup>1</sup>,
-              </span>
+                <a href="https://emrecanacikgoz.github.io" target="_blank">Emre Can Acikgoz</a><sup>1</sup>,
+              </span><br>
               <span class="author-block">
                 <a href="https://bingxuanli.com">Bingxuan Li</a><sup>1</sup>,
               </span>
               <span class="author-block">
+                <a href="https://kunlun-zhu.github.io" target="_blank">Kunlun Zhu</a><sup>1</sup>,
+              </span><br>
+              <span class="author-block">
+                <a href="https://lumos-jiateng.github.io">Jiateng Liu</a><sup>1</sup>,
+              </span>
+              
+              <span class="author-block">
                 <a href="https://adititiwari19.github.io">Aditi Tiwari</a><sup>1</sup>,
               </span>
-              <span class="author-block">
-                <a href="https://dwipddalal.github.io" target="_blank">Dwip Dalal</a><sup>1</sup>,
-              </span><br>
+              
               <span class="author-block">
                 <a href="https://mikewangwzhl.github.io">Zhenhailong Wang</a><sup>1</sup>,
               </span>
@@ -178,20 +180,11 @@
                 <a href="https://xiusic.github.io">Xiusi Chen</a><sup>1</sup>,
               </span>
               <span class="author-block">
-                <a href="https://scholar.google.com/citations?user=I6aaUNMAAAAJ&hl=en">Mahdi Namazifar</a><sup>2</sup>,
-              </span>
-              <span class="author-block">
-                <a href="https://yunzhuli.github.io">Yunzhu Li</a><sup>3</sup>
-              </span>
-              <span class="author-block">
                 <a href="https://blender.cs.illinois.edu/hengji.html">Heng Ji</a><sup>1</sup>
               </span>
             </div>
             <div class="is-size-5 publication-authors" style="margin-top:1em;">
               <span class="author-block"><sup>1</sup>University of Illinois Urbana-Champaign,</span>
-              <!-- <span class="author-block"><sup>2</sup>Tsinghua University,</span> -->
-              <span class="author-block"><sup>2</sup>Amazon,</span>
-              <span class="author-block"><sup>3</sup>Columbia University</span>
             </div>
             <div class="is-size-5 publication-authors">
               <span class="author-block"><sup>*</sup>Equal contribution</span>
@@ -209,7 +202,7 @@
                 </a>&nbsp;&nbsp;
               </span>
               <span class="link-block">
-                <a href="https://github.com/CreativityBench/CreativityBench" class="external-link button is-normal is-rounded is-dark" role="button" target="_blank">
+                <a href="https://github.com/CreativityBench/MM-CreativityBench" class="external-link button is-normal is-rounded is-dark" role="button" target="_blank">
                   <span class="icon">
                     <i class="fab fa-github"></i>
                   </span>
@@ -240,10 +233,10 @@
       <br>
       <div class="content has-text-justified" style="max-width: 95%; font-size: 1.2em; margin: 0 auto; line-height: 1.55;">
         <p style="text-align:justify; color:rgb(31, 30, 30);">
-          We introduce <b>CreativityBench</b>, a comprehensive benchmark for evaluating <b>creative intelligence in large language models (LLMs)</b> through the lens of <b>affordance-based creative tool use</b>. While recent progress in LLMs has demonstrated strong analytical reasoning and practical task execution, their ability to generate <b>novel yet physically grounded solutions under constraints</b> remains largely underexplored.
+          We introduce <b>MM-CreativityBench</b>, a multimodal benchmark for evaluating whether <b>large multimodal models (LMMs) can perform grounded creative reasoning through affordance-based tool repurposing</b>. While recent advances in LMMs have enabled strong visual understanding and general reasoning capabilities, it remains unclear whether these models can generate novel yet physically plausible solutions grounded in perceptual evidence.
         </p>
         <p style="text-align:justify; color:rgb(31, 30, 30);">
-          CreativityBench addresses this gap by focusing on a core aspect of human creativity: the ability to <b>repurpose objects based on their underlying affordances</b>, reasoning about how an object’s <i>parts, attributes, and physical properties</i> enable unconventional but plausible uses. Rather than relying on canonical tool usage, the benchmark evaluates whether models can identify <b>non-obvious, constraint-satisfying solutions grounded in physical reality</b>.
+          MM-CreativityBench addresses this challenge by focusing on a core component of creative intelligence: the ability to infer how an object’s parts and physical attributes enable unconventional but feasible uses under constraints. Rather than relying on canonical tool usage, the benchmark evaluates whether <b>models can visually inspect environments, identify relevant object parts, and reason about non-obvious affordances</b> to produce constraint-satisfying solutions grounded in physical reality.
         </p>
       </div>
 
@@ -251,14 +244,14 @@
       <div class="columns is-centered has-text-centered">
         <div class="column is-eight-fifths">
           <figure class="table-figure">
-            <img class="figure-image" src="website/img/intro.png" alt="Figure 1. Creative Tool Use As Affordance-Based Tool Repurposing." style="max-width: 95%; text-align:center; margin-bottom:1rem;"/>
+            <img class="figure-image" src="website/img/intro_new.png" alt="Figure 1. Creative Tool Use As Visually and Physically Grounded Affordance-Based Tool Repurposing." style="max-width: 95%; text-align:center; margin-bottom:1rem;"/>
             <figcaption class="figure-caption" style="font-size: 1.1em;">
-              <b>Figure 1.</b> Creative Tool Use As Affordance-Based Tool Repurposing. Under constraints, a model solves a task by identifying and using the affordances of an alternative object.
+              <b>Figure 1.</b> Beyond normal tool use, creative tool repurposing requires visual grounding of physical affordances, enabling the model to discover that a key’s serrated edge can cut box tape.
             </figcaption>
           </figure>
 
           <p style="text-align:justify; color:rgb(31, 30, 30); margin-top:1rem; margin-bottom:1rem; line-height: 1.55; max-width: 95%; margin: 0 auto; font-size: 1.2em;">
-            CreativityBench is more than a benchmark, but it is a <b>structured and scalable evaluation framework for creative reasoning</b>, designed to uncover fundamental limitations in current models and guide future progress toward more flexible, adaptive intelligence. 
+            Unlike prior creativity benchmarks that are primarily text-centric or scenario-driven, MM-CreativityBench emphasizes <b>visually grounded and evidence-driven reasoning</b>. Each task provides structured multimodal context, including scene images, object-centric views, and fine-grained part-level observations, requiring models to actively connect perception with functional reasoning. The benchmark further evaluates whether models can sustain interactive exploration, avoid hallucinated affordances, and justify solutions using observable evidence.
           </p>
         </div>
       </div>
@@ -270,31 +263,33 @@
       <div class="columns is-centered has-text-centered" style="margin-top:2em;">
         <div class="column is-eight-fifths">
           <figure class="table-figure">
-            <img class="figure-image" src="website/img/pipeline.png" alt="Figure 2. Annotation Pipeline For Affordance Knowledge Base Construction." style="max-width: 98%; margin: 0 auto; margin-bottom:1rem;" />
+            <img class="figure-image" src="website/img/evaluation.png" alt="Figure 2. Interactive Evaluation Protocol in MM-CreativityBench." style="max-width: 98%; margin: 0 auto; margin-bottom:1rem;" />
             <figcaption class="figure-caption" style="font-size: 1.1em;">
-              <b>Figure 2.</b> Annotation Pipeline For Affordance Knowledge Base Construction.
+              <b>Figure 2.</b> Interactive Evaluation Protocol in MM-CreativityBench.
             </figcaption>
           </figure>
 
           <p style="text-align:justify; margin-top:1em;  margin-bottom:1rem; line-height: 1.55; max-width: 95%; font-size: 1.2em; margin: 0 auto; color:rgb(31, 30, 30);">
-            We construct a large-scale, structured affordance knowledge base (KB) containing <b>4K entities and 150K+ affordance annotations</b>, explicitly linking objects to their <b>parts, attributes, and actionable uses</b>. This KB enables grounded reasoning by anchoring model decisions in <b>fine-grained physical properties</b>, rather than surface-level semantic associations.
+            We use the interactive protocol: each example starts with a scenario image containing multiple entities, and the model may inspect entities and parts for closer views before answering.<br>1. <b>Initialization: </b>Given the scene and task, the model proposes an ordered list of candidate entities to initialize exploration stack, thereby directing early exploration toward likely relevant objects.<br>2. <b>Inspect Entity: </b>When an entity is inspected, it is removed from the stack, and its affordance-relevant parts are pushed for part-level inspection. This turns coarse entity-level exploration into finer part-level verification.<br>3. <b>Inspect Part: </b>When a part is inspected, it is removed from the stack and assigned a binary judgment, indicating whether its observed attributes satisfy the task requirements.<br>4. <b>Answer: </b>Exploration stops when no unexplored entity or part remains. In the final answer turn, the model compares all inspected parts with $b_t=1$ and selects the final pair.
           </p>
         </div>
       </div>
       <br>
       <br>
-      <h2 class="title is-3" style="text-align:center; margin-bottom: 2.5rem; font-size: 2.3em;">Physically Grounded Creative Tasks</h2>
+      <h2 class="title is-3" style="text-align:center; margin-bottom: 2.5rem; font-size: 2.3em;">Affordance-Grounded Alignment</h2>
       <div class="columns is-centered has-text-centered" style="margin-top:2em;">
         <div class="column is-eight-fifths">
           <figure class="table-figure">
-            <img class="figure-image" src="website/img/task_sampling_pipeline.png" alt="Figure 2. CreativityBench Task Sampling Pipeline." style="max-width: 98%; margin: 0 auto; margin-bottom:1rem;" />
+            <img class="figure-image" src="website/img/training.png" alt="Figure 3. Affordance-Grounded Alignment." style="max-width: 98%; margin: 0 auto; margin-bottom:1rem;" />
             <figcaption class="figure-caption" style="font-size: 1.1em;">
-              <b>Figure 3.</b> CreativityBench Task Sampling Pipeline.
+              <b>Figure 3.</b> Affordance-Grounded Alignment
             </figcaption3>
           </figure>
 
           <p style="text-align:justify; margin-top:1em;  margin-bottom:1rem; line-height: 1.55; max-width: 95%; font-size: 1.2em; margin: 0 auto; color:rgb(31, 30, 30);">
-            Using our affordance KB, we generate <b>14K diverse tasks</b> that require models to identify <b>non-obvious yet physically plausible solutions</b> under constraints. Each task is constructed to go beyond object-level plausibility, requiring models to reason about <b>how affordances emerge from structure</b> and how they can be recombined to achieve a goal.
+            We align the model in two stages: <b>SFT</b> learns structured exploration from positive trajectories, while <b>turn-level DPO</b> improves attribute--affordance grounding by contrasting grounded reasoning with plausible but visually and physically unsupported alternatives.<br>
+            <b>SFT: </b>SFT is executed with positive trajectories sampled, which are guided by structural affordance knowledge base, relevant attributes, and the gold solution. Rather than only final answers, SFT teaches the model to <b>select candidate entities, inspect relevant parts, interpret attributes, and compare entity-part pairs before answering.</b><br>
+            <b>Turn-Level DPO: </b>To reduce the gap between guided training and unguided inference, we further apply DPO using preference pairs, where <b>preferred trajectories are grounded to attribute-affordance knowledge</b> similar to SFT data while <b>rejected trajectories are sampled by keeping valid action formats and plausible entity--part choices, but misinterpreting or overclaiming visual evidence</b>. Contrasting responses under the same context trains the model to prefer reasoning that justifies affordances with observed physical or state attributes, directly targeting attribute--affordance failures under multimodal uncertainty.
           </p>
         </div>
       </div>
