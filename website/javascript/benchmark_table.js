@@ -237,12 +237,21 @@ var colorFormatterFloat4 = function (cell, formatterParams) {
 
 document.addEventListener('DOMContentLoaded', function () {
     Promise.all([
-        fetch('website/data/creativitybench_total_benchmark.json').then(response => response.json()),
+        fetch('website/data/mm-creativitybench_benchmark.json').then(response => response.json()),
     ])
-    .then(([creativitybench_data]) => {
+    .then(([mmcb_data]) => {
         var getColumnMinMax = (data, field) => {
             let values = data.map(item => item[field]).filter(val => val !== "-").map(Number);
             return { min: Math.min(...values), max: Math.max(...values) };
+        };
+
+        var setMinMax = (col, data) => {
+            if (col.columns) {
+                col.columns.forEach(sub => setMinMax(sub, data));
+            } else if (col.field && col.field !== "model" && col.field !== "order") {
+                let { min, max } = getColumnMinMax(data, col.field);
+                col.formatterParams = { min, max };
+            }
         };
 
         var cb_columns = [
@@ -259,7 +268,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 field: "gold_correct",
                 cssClass: "avg-column",
                 hozAlign: "center",
-                minWidth: 110,
+                minWidth: 100,
                 sorter: "number",
                 formatter: colorFormatterFloat4
             },
@@ -268,75 +277,86 @@ document.addEventListener('DOMContentLoaded', function () {
                 field: "entity_correct",
                 cssClass: "avg-column",
                 hozAlign: "center",
-                minWidth: 110,
-
+                minWidth: 100,
                 formatter: colorFormatterFloat4
             },
             {
-                title: "Use Condition",
-                field: "constraint_use",
+                title: "Turns",
+                field: "turns",
                 cssClass: "avg-column",
                 hozAlign: "center",
-                minWidth: 100,
-
+                minWidth: 80,
                 formatter: colorFormatterSubgoal
             },
             {
-                title: "Env. Condition",
-                field: "constraint_env",
-                cssClass: "avg-column",
-                hozAlign: "center",
-                minWidth: 100,
-
-                formatter: colorFormatterActionSeq
+                title: "Avg. Distinct Explored",
+                columns: [
+                    {
+                        title: "Entities",
+                        field: "avg_distinct_entities",
+                        cssClass: "avg-column",
+                        hozAlign: "center",
+                        minWidth: 80,
+                        formatter: colorFormatterSubgoal
+                    },
+                    {
+                        title: "Parts",
+                        field: "avg_distinct_parts",
+                        cssClass: "avg-column",
+                        hozAlign: "center",
+                        minWidth: 80,
+                        formatter: colorFormatterSubgoal
+                    }
+                ]
             },
             {
-                title: "Recipient Condition",
-                field: "constraint_rcpt",
-                cssClass: "avg-column",
-                hozAlign: "center",
-                minWidth: 100,
-
-                formatter: colorFormatterTrans
+                title: "Gold Entity Explored Before Answer",
+                columns: [
+                    {
+                        title: "Entity Correct",
+                        field: "gold_entity_explored_entity_correct",
+                        cssClass: "avg-column",
+                        hozAlign: "center",
+                        minWidth: 100,
+                        formatter: colorFormatterActionSeq
+                    },
+                    {
+                        title: "Entity Wrong",
+                        field: "gold_entity_explored_entity_wrong",
+                        cssClass: "avg-column",
+                        hozAlign: "center",
+                        minWidth: 100,
+                        formatter: colorFormatterActionSeq
+                    }
+                ]
             },
             {
-                title: "Physical Grounding",
-                field: "physical_grounding",
-                cssClass: "avg-column",
-                hozAlign: "center",
-                minWidth: 130,
-
-                formatter: colorFormatterGoalInt
-            },
-            {
-                title: "Action Feasibility",
-                field: "action_feasibility",
-                cssClass: "avg-column",
-                hozAlign: "center",
-                minWidth: 120,
-
-                formatter: colorFormatterSubgoal
-            },
-            {
-                title: "Prediction Correctness",
-                field: "prediction_correctness",
-                cssClass: "avg-column",
-                hozAlign: "center",
-                minWidth: 140,
-
-                formatter: colorFormatterActionSeq
+                title: "Gold Part Explored Before Answer",
+                columns: [
+                    {
+                        title: "Part Correct",
+                        field: "gold_part_explored_part_correct",
+                        cssClass: "avg-column",
+                        hozAlign: "center",
+                        minWidth: 100,
+                        formatter: colorFormatterTrans
+                    },
+                    {
+                        title: "Part Wrong",
+                        field: "gold_part_explored_part_wrong",
+                        cssClass: "avg-column",
+                        hozAlign: "center",
+                        minWidth: 100,
+                        formatter: colorFormatterTrans
+                    }
+                ]
             }
         ];
 
-        cb_columns.forEach(column => {
-            if (column.field !== "model" && column.field !== "order") {
-                let { min, max } = getColumnMinMax(creativitybench_data, column.field);
-                column.formatterParams = { min, max };
-            }
-        });
+        cb_columns.forEach(col => setMinMax(col, mmcb_data));
 
         new Tabulator("#creativitybench-benchmark-main-table", {
-            data: creativitybench_data.filter(row => row.model !== "Average"),
+            data: mmcb_data,
             layout: "fitColumns",
             responsiveLayout: "collapse",
             responsiveLayoutCollapseStartOpen: false,
