@@ -354,12 +354,19 @@
             </div>
             <div class="box mx-auto my-4" style="max-width: 90%;">
               <div class="content has-text-centered" style="margin-bottom: 2rem;">
-                <div style="display: flex; gap: 1.5rem; justify-content: center; align-items: flex-start;">
-                  <figure style="flex: 1; max-width: 80%; margin: 0;">
-                    <img src="website/img/takeaway3.png" alt="" style="width: 100%;" />
-                    <figcaption style="font-size: 0.95em; margin-top: 0.4em; text-align: center;">Exploration repetition rates.</figcaption>
-                  </figure>
-                </div>
+                <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                  <div style="display: flex; gap: 1.5rem; justify-content: center; align-items: flex-start;">
+                    <figure style="flex: 1; max-width: 80%; margin: 0;">
+                      <img src="website/img/takeaway3-1.png" alt="" style="width: 100%;" />
+                      <figcaption style="font-size: 0.95em; margin-top: 0.4em; text-align: center;">(a) Qwen3-4B-VL-Instruct.</figcaption>
+                    </figure>
+                  </div>
+                  <div style="display: flex; gap: 1.5rem; justify-content: center; align-items: flex-start;">
+                    <figure style="flex: 1; max-width: 80%; margin: 0;">
+                      <img src="website/img/takeaway3-2.png" alt="" style="width: 100%;" />
+                      <figcaption style="font-size: 0.95em; margin-top: 0.4em; text-align: center;">(b) Qwen3-8B-VL-Instruct.</figcaption>
+                    </figure>
+                  </div>
                 <p class="image-subtitle" style="font-size: 1.1em; margin-top: 1rem;">
                   <b>Figure 6.</b> Repetition Rate measures how often the model revisits previously explored entities or parts, where lower values reflect better state tracking efficiency. SFT, DPO with hard negatives, and SFT+DPO all substantially reduce redundant exploration. Our training improves the model’s ability to <b>maintain an exploration state and avoid revisiting already inspected regions.</b>
                 </p>
@@ -367,12 +374,19 @@
             </div>
             <div class="box mx-auto my-4" style="max-width: 90%;">
               <div class="content has-text-centered" style="margin-bottom: 2rem;">
-                <div style="display: flex; gap: 1.5rem; justify-content: center; align-items: flex-start;">
-                  <figure style="flex: 1; max-width: 80%; margin: 0;">
-                    <img src="website/img/takeaway4.png" alt="" style="width: 100%;" />
-                    <figcaption style="font-size: 0.95em; margin-top: 0.4em; text-align: center;">Exploration progress and similarity density.</figcaption>
-                  </figure>
-                </div>
+                <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                  <div style="display: flex; gap: 1.5rem; justify-content: center; align-items: flex-start;">
+                    <figure style="flex: 1; max-width: 80%; margin: 0;">
+                      <img src="website/img/takeaway4-1.png" alt="" style="width: 100%;" />
+                      <figcaption style="font-size: 0.95em; margin-top: 0.4em; text-align: center;">(a) Exploration progress.</figcaption>
+                    </figure>
+                  </div>
+                  <div style="display: flex; gap: 1.5rem; justify-content: center; align-items: flex-start;">
+                    <figure style="flex: 1; max-width: 80%; margin: 0;">
+                      <img src="website/img/takeaway4-2.png" alt="" style="width: 100%;" />
+                      <figcaption style="font-size: 0.95em; margin-top: 0.4em; text-align: center;">(b) Similarity density.</figcaption>
+                    </figure>
+                  </div>
                 <p class="image-subtitle" style="font-size: 1.1em; margin-top: 1rem;">
                   <b>Figure 7.</b>Similarity Density measures how concentrated exploration is around useful hypotheses: part-level density is the fraction of explored parts that are gold part or affordance-similar to it, while entity-level density is the fraction of explored entities that are gold entity or contain at least one affordance-similar part. Exploration Progress records when such candidates are discovered along the trajectory using the normalized turn index.<br><br>SFT improves exploration discipline and state tracking, while DPO steers exploration toward semantically useful hypotheses.
                 </p>
