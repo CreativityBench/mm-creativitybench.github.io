@@ -145,44 +145,44 @@
             <!-- Author list -->
             <div class="is-size-5 publication-authors">
               <span class="author-block">
-                <a href="https://qiancheng0.github.io/" target="_blank">Cheng Qian</a><sup>1*</sup>,
+                <a href="https://qiancheng0.github.io/" target="_blank">Cheng Qian</a><sup>*</sup>,
               </span>
               <span class="author-block">
-                <a href="https://hyeonjeongha.github.io" target="_blank">Hyeonjeong Ha</a><sup>1*</sup>,
+                <a href="https://hyeonjeongha.github.io" target="_blank">Hyeonjeong Ha</a><sup>*</sup>,
               </span>
               <span class="author-block">
-                <a href="https://jiayujeff.github.io" target="_blank">Jiayu Liu</a><sup>1</sup>,
+                <a href="https://jiayujeff.github.io" target="_blank">Jiayu Liu</a>,
               </span>
               <span class="author-block">
-                <a href="https://wjdghks950.github.io">Jeonghwan Kim</a><sup>1</sup>,
+                <a href="https://wjdghks950.github.io">Jeonghwan Kim</a>,
               </span>
               <span class="author-block">
-                <a href="https://emrecanacikgoz.github.io" target="_blank">Emre Can Acikgoz</a><sup>1</sup>,
+                <a href="https://emrecanacikgoz.github.io" target="_blank">Emre Can Acikgoz</a>,
               </span><br>
               <span class="author-block">
-                <a href="https://bingxuanli.com">Bingxuan Li</a><sup>1</sup>,
+                <a href="https://bingxuanli.com">Bingxuan Li</a>,
               </span>
               <span class="author-block">
-                <a href="https://kunlun-zhu.github.io" target="_blank">Kunlun Zhu</a><sup>1</sup>,
+                <a href="https://kunlun-zhu.github.io" target="_blank">Kunlun Zhu</a>,
               </span>
               <span class="author-block">
-                <a href="https://lumos-jiateng.github.io">Jiateng Liu</a><sup>1</sup>,
+                <a href="https://lumos-jiateng.github.io">Jiateng Liu</a>,
               </span>
               <span class="author-block">
-                <a href="https://adititiwari19.github.io">Aditi Tiwari</a><sup>1</sup>,
+                <a href="https://adititiwari19.github.io">Aditi Tiwari</a>,
               </span>
               <span class="author-block">
-                <a href="https://mikewangwzhl.github.io">Zhenhailong Wang</a><sup>1</sup>,
+                <a href="https://mikewangwzhl.github.io">Zhenhailong Wang</a>,
               </span>
               <span class="author-block">
-                <a href="https://xiusic.github.io">Xiusi Chen</a><sup>1</sup>,
+                <a href="https://xiusic.github.io">Xiusi Chen</a>,
               </span>
               <span class="author-block">
-                <a href="https://blender.cs.illinois.edu/hengji.html">Heng Ji</a><sup>1</sup>
+                <a href="https://blender.cs.illinois.edu/hengji.html">Heng Ji</a>
               </span>
             </div>
             <div class="is-size-5 publication-authors" style="margin-top:1em;">
-              <span class="author-block"><sup>1</sup>University of Illinois Urbana-Champaign,</span>
+              <span class="author-block">University of Illinois Urbana-Champaign,</span>
             </div>
             <div class="is-size-5 publication-authors">
               <span class="author-block"><sup>*</sup>Equal contribution</span>
@@ -285,9 +285,9 @@
           </figure>
 
           <p style="text-align:justify; margin-top:1em;  margin-bottom:1rem; line-height: 1.55; max-width: 95%; font-size: 1.2em; margin: 0 auto; color:rgb(31, 30, 30);">
-            We align the model in two stages: <b>SFT</b> learns structured exploration from positive trajectories, while <b>turn-level DPO</b> improves attribute--affordance grounding by contrasting grounded reasoning with plausible but visually and physically unsupported alternatives.<br>
+            We align the model in two stages: <b>SFT</b> learns structured exploration from positive trajectories, while <b>turn-level DPO</b> improves attribute-affordance grounding by contrasting grounded reasoning with plausible but visually and physically unsupported alternatives.<br>
             1. <b>SFT: </b>SFT is executed with positive trajectories sampled, which are guided by structural affordance knowledge base, relevant attributes, and the gold solution. Rather than only final answers, SFT teaches the model to <b>select candidate entities, inspect relevant parts, interpret attributes, and compare entity-part pairs before answering.</b><br>
-            2. <b>Turn-Level DPO: </b>To reduce the gap between guided training and unguided inference, we further apply DPO using preference pairs, where <b>preferred trajectories are grounded to attribute-affordance knowledge</b> similar to SFT data while <b>rejected trajectories are sampled by keeping valid action formats and plausible entity--part choices, but misinterpreting or overclaiming visual evidence</b>. Contrasting responses under the same context trains the model to prefer reasoning that justifies affordances with observed physical or state attributes, directly targeting attribute--affordance failures under multimodal uncertainty.
+            2. <b>Turn-Level DPO: </b>To reduce the gap between guided training and unguided inference, we further apply DPO using preference pairs, where <b>preferred trajectories are grounded to attribute-affordance knowledge</b> similar to SFT data while <b>rejected trajectories are sampled by keeping valid action formats and plausible entity-part choices, but misinterpreting or overclaiming visual evidence</b>. Contrasting responses under the same context trains the model to prefer reasoning that justifies affordances with observed physical or state attributes, directly targeting attribute-affordance failures under multimodal uncertainty.
           </p>
         </div>
       </div>
@@ -300,8 +300,9 @@
     <div class="container" style="max-width: 85%">
       <h2 class="title is-3" style="text-align:center; margin-bottom:3rem; font-size: 2.3em;">Leaderboard</h2>
       <p style="text-align:justify; margin-top:1em;  margin-bottom:1rem; line-height: 1.55; max-width: 95%; font-size: 1.2em; margin: 0 auto; color:rgb(31, 30, 30);">
-        From the metric perspective, current models are better at choosing plausible tools at the entity level but struggle to produce fully correct, physically grounded tool use. Model reasoning is often plausible but fails to account for all conditions required for successful execution.
-        From the model perspective, there is a clear split between creative affordance discovery and grounded reasoning quality. Improvements from model scaling alone quickly saturate, indicating that stronger performance requires advances in grounded affordance reasoning rather than size alone.
+        The benchmarking results on MM-CreativityBench. Models often locate the relevant entity but struggle with fine-grained gold-part grounding. Larger exploration traces improve evidence coverage but do not guarantee correct answers, revealing bottlenecks in visual evidence use. <br>
+        SFT + DPO with hard negatives achieves the highest gold and entity correct rates with more efficient exploration. Gold parts and entities are more frequently explored when the final answer is correct than when it is wrong, suggesting that correct answers are typically grounded in relevant exploration.<br><br>
+        <b>Training improves both accuracy and efficiency: SFT organizes exploration, while DPO helps models reject misleading evidence and commit earlier to valid grounding paths.</b>
       </p>  
       <div id="creativitybench-benchmark-main-table"></div>
       <br>
