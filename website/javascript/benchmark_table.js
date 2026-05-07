@@ -259,8 +259,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 title: "Model",
                 field: "model",
                 cssClass: "avg-column",
-                widthGrow: 1.5,
-                minWidth: 180,
+                widthGrow: 3,
+                minWidth: 320,
                 headerSort: true
             },
             {
