@@ -134,12 +134,12 @@
                    style="vertical-align: middle; margin-right: 20px; position: relative; top: -15px; left: 30px"
                    width="80"
                    height="80" />
-              <span class="creativitybench" style="vertical-align: middle">CreativityBench</span>
+              <span class="creativitybench" style="vertical-align: middle">MM-CreativityBench</span>
             </h1>
 
             <!-- SUBTITLE -->
             <h2 class="title is-1 publication-title is-bold" style="margin-top:-0.7em; margin-right: 30px; margin-left: 30px;">
-              Evaluating Agent Creative Reasoning via<br>Affordance-Based Tool Repurposing
+              Advancing Creative Tool Use in Large Multimodal Models
             </h2>
 
             <!-- Author list -->
@@ -164,15 +164,13 @@
               </span>
               <span class="author-block">
                 <a href="https://kunlun-zhu.github.io" target="_blank">Kunlun Zhu</a><sup>1</sup>,
-              </span><br>
+              </span>
               <span class="author-block">
                 <a href="https://lumos-jiateng.github.io">Jiateng Liu</a><sup>1</sup>,
               </span>
-              
               <span class="author-block">
                 <a href="https://adititiwari19.github.io">Aditi Tiwari</a><sup>1</sup>,
               </span>
-              
               <span class="author-block">
                 <a href="https://mikewangwzhl.github.io">Zhenhailong Wang</a><sup>1</sup>,
               </span>
@@ -259,11 +257,11 @@
       <!-- Figure 2 -->
       <br>
       <br>
-      <h2 class="title is-3" style="text-align:center; margin-bottom: 2.5rem; font-size: 2.3em;">Affordance Knowledge Base</h2>
+      <h2 class="title is-3" style="text-align:center; margin-bottom: 2.5rem; font-size: 2.3em;">Interactive Evaluation Protocol</h2>
       <div class="columns is-centered has-text-centered" style="margin-top:2em;">
         <div class="column is-eight-fifths">
           <figure class="table-figure">
-            <img class="figure-image" src="website/img/evaluation.png" alt="Figure 2. Interactive Evaluation Protocol in MM-CreativityBench." style="max-width: 98%; margin: 0 auto; margin-bottom:1rem;" />
+            <img class="figure-image" src="website/img/evaluation.png" alt="Figure 2. Interactive Evaluation Protocol in MM-CreativityBench." style="max-width: 85%; margin: 0 auto; margin-bottom:1rem;" />
             <figcaption class="figure-caption" style="font-size: 1.1em;">
               <b>Figure 2.</b> Interactive Evaluation Protocol in MM-CreativityBench.
             </figcaption>
@@ -280,7 +278,7 @@
       <div class="columns is-centered has-text-centered" style="margin-top:2em;">
         <div class="column is-eight-fifths">
           <figure class="table-figure">
-            <img class="figure-image" src="website/img/training.png" alt="Figure 3. Affordance-Grounded Alignment." style="max-width: 98%; margin: 0 auto; margin-bottom:1rem;" />
+            <img class="figure-image" src="website/img/training.png" alt="Figure 3. Affordance-Grounded Alignment." style="max-width: 85%; margin: 0 auto; margin-bottom:1rem;" />
             <figcaption class="figure-caption" style="font-size: 1.1em;">
               <b>Figure 3.</b> Affordance-Grounded Alignment
             </figcaption3>
@@ -288,8 +286,8 @@
 
           <p style="text-align:justify; margin-top:1em;  margin-bottom:1rem; line-height: 1.55; max-width: 95%; font-size: 1.2em; margin: 0 auto; color:rgb(31, 30, 30);">
             We align the model in two stages: <b>SFT</b> learns structured exploration from positive trajectories, while <b>turn-level DPO</b> improves attribute--affordance grounding by contrasting grounded reasoning with plausible but visually and physically unsupported alternatives.<br>
-            <b>SFT: </b>SFT is executed with positive trajectories sampled, which are guided by structural affordance knowledge base, relevant attributes, and the gold solution. Rather than only final answers, SFT teaches the model to <b>select candidate entities, inspect relevant parts, interpret attributes, and compare entity-part pairs before answering.</b><br>
-            <b>Turn-Level DPO: </b>To reduce the gap between guided training and unguided inference, we further apply DPO using preference pairs, where <b>preferred trajectories are grounded to attribute-affordance knowledge</b> similar to SFT data while <b>rejected trajectories are sampled by keeping valid action formats and plausible entity--part choices, but misinterpreting or overclaiming visual evidence</b>. Contrasting responses under the same context trains the model to prefer reasoning that justifies affordances with observed physical or state attributes, directly targeting attribute--affordance failures under multimodal uncertainty.
+            1. <b>SFT: </b>SFT is executed with positive trajectories sampled, which are guided by structural affordance knowledge base, relevant attributes, and the gold solution. Rather than only final answers, SFT teaches the model to <b>select candidate entities, inspect relevant parts, interpret attributes, and compare entity-part pairs before answering.</b><br>
+            2. <b>Turn-Level DPO: </b>To reduce the gap between guided training and unguided inference, we further apply DPO using preference pairs, where <b>preferred trajectories are grounded to attribute-affordance knowledge</b> similar to SFT data while <b>rejected trajectories are sampled by keeping valid action formats and plausible entity--part choices, but misinterpreting or overclaiming visual evidence</b>. Contrasting responses under the same context trains the model to prefer reasoning that justifies affordances with observed physical or state attributes, directly targeting attribute--affordance failures under multimodal uncertainty.
           </p>
         </div>
       </div>
